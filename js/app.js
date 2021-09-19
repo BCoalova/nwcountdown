@@ -21,4 +21,4 @@ const countDown = setInterval( () => {
 
     }
 
-})
+}, 300)
