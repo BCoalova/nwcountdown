@@ -12,7 +12,7 @@ const countDown = setInterval(() => {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
     let seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-    countDownNode.innerHTML = `${day} Días, ${hours}h ${minutes}m ${seconds < 10 ? '0' + seconds : seconds}s`
+    countDownNode.innerHTML = `${day} Days, ${hours}h ${minutes}m ${seconds < 10 ? '0' + seconds : seconds}s`
 
     if (distance < 0) {
         clearInterval(countDown)
