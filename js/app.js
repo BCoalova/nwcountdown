@@ -1,5 +1,5 @@
 const countDownNode = document.querySelector('[countdown]')
-const preLoadCountDownNode = document.querySelector('[preLoadCountdown]')
+const preLoadCountDownNode = document.querySelector('[preLoadCountDownNode]')
 
 const newWorldRelease = new Date(Date.UTC(2021, 8, 28, 15, 00, 00)).getTime()
 const newWorldPreLoadRelease = new Date(Date.UTC(2021, 8, 27, 15, 00, 00)).getTime()
