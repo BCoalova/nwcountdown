@@ -1,6 +1,8 @@
 const countDownNode = document.querySelector('[countdown]')
+const preLoadCountDownNode = document.querySelector('[preLoadCountdown]')
 
-const newWorldRelease = new Date(Date.UTC(2021, 8, 28, 14, 00, 00)).getTime()
+const newWorldRelease = new Date(Date.UTC(2021, 8, 28, 15, 00, 00)).getTime()
+const newWorldPreLoadRelease = new Date(Date.UTC(2021, 8, 27, 15, 00, 00)).getTime()
 
 const countDown = setInterval(() => {
     let now = new Date().getTime()
@@ -17,5 +19,25 @@ const countDown = setInterval(() => {
     if (distance < 0) {
         clearInterval(countDown)
         countDownNode.innerHTML = 'LETS PLAY'
+    }
+}, 300)
+
+const preLoadCountDown = setInterval(() => {
+    let now = new Date().getTime()
+
+    let preLoadDistance = newWorldPreLoadRelease - now
+
+    let preLoadDay = Math.floor(preLoadDistance / (1000 * 60 * 60 * 24))
+    let preLoadHours = Math.floor((preLoadDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    let preLoadMinutes = Math.floor((preLoadDistance % (1000 * 60 * 60)) / (1000 * 60))
+    let preLoadSeconds = Math.floor((preLoadDistance % (1000 * 60)) / 1000)
+
+    preLoadCountDownNode.innerHTML = `${preLoadDay} Days, ${preLoadHours}h ${preLoadMinutes}m ${
+        preLoadSeconds < 10 ? '0' + preLoadSeconds : preLoadSeconds
+    }s`
+
+    if (preLoadDistance < 0) {
+        clearInterval(preLoadCountDown)
+        preLoadCountDownNode.innerHTML = 'LETS PLAY'
     }
 }, 300)

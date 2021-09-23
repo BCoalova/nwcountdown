@@ -11,14 +11,20 @@ body {
     min-height: 100vh;
     display: grid;
     place-content: center;
+    text-align: center;
 }
 
 .countDownWrapper img {
     margin-bottom: 1rem;
 }
-
-.countDownWrapper [countdown] {
+.countDownWrapper p {
+    margin-bottom: 0;
+}
+.countDownWrapper [countdown],
+.countDownWrapper [preLoadCountdown],
+.countDownWrapper p {
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.5rem;
     color: #eeefed;
+    margin-bottom: 0.3rem;
 }
