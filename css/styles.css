@@ -21,7 +21,7 @@ body {
     margin-bottom: 0;
 }
 .countDownWrapper [countdown],
-.countDownWrapper [preLoadCountdown],
+.countDownWrapper [preLoadCountDownNode],
 .countDownWrapper p {
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.5rem;
