@@ -48,6 +48,7 @@ const preLoadCountDown = setInterval(() => {
 }, 300)
 
 launchBtn.addEventListener('click', () => {
+    console.log('object')
     let className = launchBtn.classList
     if (className.value) return
     if (!className.value) {
@@ -59,6 +60,7 @@ launchBtn.addEventListener('click', () => {
 })
 
 preLoadBtn.addEventListener('click', () => {
+    console.log('object')
     let className = preLoadBtn.classList
     if (className.value) return
     if (!className.value) {
