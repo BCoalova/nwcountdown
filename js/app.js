@@ -1,5 +1,8 @@
 const countDownNode = document.querySelector('[countdown]')
 const preLoadCountDownNode = document.querySelector('[preLoadCountDownNode]')
+const buttons = document.querySelectorAll('button')
+const launchBtn = document.querySelector('[launch]')
+const preLoadBtn = document.querySelector('[preload]')
 
 const newWorldRelease = new Date(Date.UTC(2021, 8, 28, 15, 00, 00)).getTime()
 const newWorldPreLoadRelease = new Date(Date.UTC(2021, 8, 27, 15, 00, 00)).getTime()
@@ -14,7 +17,9 @@ const countDown = setInterval(() => {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
     let seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-    countDownNode.innerHTML = `${day} Days, ${hours}h ${minutes}m ${seconds < 10 ? '0' + seconds : seconds}s`
+    countDownNode.innerHTML = `${day} <span>Days,</span> ${hours}<span>h</span> ${minutes}<span>m</span> ${
+        seconds < 10 ? '0' + seconds : seconds
+    }s`
 
     if (distance < 0) {
         clearInterval(countDown)
@@ -32,7 +37,7 @@ const preLoadCountDown = setInterval(() => {
     let preLoadMinutes = Math.floor((preLoadDistance % (1000 * 60 * 60)) / (1000 * 60))
     let preLoadSeconds = Math.floor((preLoadDistance % (1000 * 60)) / 1000)
 
-    preLoadCountDownNode.innerHTML = `${preLoadDay} Days, ${preLoadHours}h ${preLoadMinutes}m ${
+    preLoadCountDownNode.innerHTML = `${preLoadDay} <span>Days,</span> ${preLoadHours}<span>h</span> ${preLoadMinutes}<span>m</span> ${
         preLoadSeconds < 10 ? '0' + preLoadSeconds : preLoadSeconds
     }s`
 
@@ -41,3 +46,25 @@ const preLoadCountDown = setInterval(() => {
         preLoadCountDownNode.innerHTML = 'LETS PLAY'
     }
 }, 300)
+
+launchBtn.addEventListener('click', () => {
+    let className = launchBtn.classList
+    if (className.value) return
+    if (!className.value) {
+        preLoadCountDownNode.classList.remove('show')
+        countDownNode.classList.add('show')
+        preLoadBtn.classList.remove('active')
+        return className.add('active')
+    }
+})
+
+preLoadBtn.addEventListener('click', () => {
+    let className = preLoadBtn.classList
+    if (className.value) return
+    if (!className.value) {
+        countDownNode.classList.remove('show')
+        preLoadCountDownNode.classList.add('show')
+        launchBtn.classList.remove('active')
+        return className.add('active')
+    }
+})
