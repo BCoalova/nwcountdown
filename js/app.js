@@ -3,8 +3,10 @@ const preLoadCountDownNode = document.querySelector('[preLoadCountDownNode]')
 const launchBtn = document.querySelector('[launch]')
 const preLoadBtn = document.querySelector('[preload]')
 
-const newWorldRelease = new Date(Date.UTC(2021, 8, 28, 15, 00, 00)).getTime()
+const newWorldRelease = new Date(Date.UTC(2021, 8, 28, 11, 00, 00)).getTime()
 const newWorldPreLoadRelease = new Date(Date.UTC(2021, 8, 27, 15, 00, 00)).getTime()
+
+const eightAm = new Date()
 
 const newCountDown = (release, node, message) => {
     setInterval(() => {
@@ -19,7 +21,7 @@ const newCountDown = (release, node, message) => {
 
         node.innerHTML = `${preLoadDay} <span>Days,</span> ${preLoadHours}<span>h</span> ${preLoadMinutes}<span>m</span> ${
             preLoadSeconds < 10 ? '0' + preLoadSeconds : preLoadSeconds
-        }s`
+        }s <span>${countDownNode === node ? '(South American Servers)' : ''}</span>`
 
         if (preLoadDistance < 0) {
             clearInterval(preLoadCountDown)
