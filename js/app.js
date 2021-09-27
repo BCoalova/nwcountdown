@@ -9,7 +9,7 @@ const newWorldPreLoadRelease = new Date(Date.UTC(2021, 8, 27, 15, 00, 00)).getTi
 const eightAm = new Date()
 
 const newCountDown = (release, node, message) => {
-    setInterval(() => {
+    let preLoadCountDown = setInterval(() => {
         let now = new Date().getTime()
 
         let preLoadDistance = release - now
