@@ -19,9 +19,16 @@ const newCountDown = (release, node, message) => {
         let preLoadMinutes = Math.floor((preLoadDistance % (1000 * 60 * 60)) / (1000 * 60))
         let preLoadSeconds = Math.floor((preLoadDistance % (1000 * 60)) / 1000)
 
-        node.innerHTML = `${preLoadDay} <span>Days,</span> ${preLoadHours}<span>h</span> ${preLoadMinutes}<span>m</span> ${
-            preLoadSeconds < 10 ? '0' + preLoadSeconds : preLoadSeconds
-        }s <span>${countDownNode === node ? '(South American Servers)' : ''}</span>`
+        let nodeSpanDays = `<span>Day${preLoadDay > 1 ? 's' : ''},</span>`
+        let nodeDays = `${preLoadDay === 0 ? '' : preLoadDay} ${preLoadDay === 0 ? '' : nodeSpanDays}`
+
+        let nodeHours = `${preLoadHours === 0 ? '' : preLoadHours < 10 ? '0' + preLoadHours : preLoadHours}<span>h</span>`
+        let nodeMinutes = `${preLoadMinutes < 10 ? '0' + preLoadMinutes : preLoadMinutes}<span>m</span>`
+        let nodeSeconds = `${preLoadSeconds < 10 ? '0' + preLoadSeconds : preLoadSeconds}s`
+
+        node.innerHTML = `${nodeDays} ${nodeHours} ${nodeMinutes} ${nodeSeconds}s <span>${
+            countDownNode === node ? '(South American Servers)' : ''
+        }</span>`
 
         if (preLoadDistance < 0) {
             clearInterval(preLoadCountDown)
@@ -34,7 +41,6 @@ newCountDown(newWorldRelease, countDownNode, 'LETS PLAY')
 newCountDown(newWorldPreLoadRelease, preLoadCountDownNode, 'LETS DOWNLOAD')
 
 launchBtn.addEventListener('click', () => {
-    console.log('object')
     let className = launchBtn.classList
     if (className.value) return
     if (!className.value) {
@@ -46,7 +52,6 @@ launchBtn.addEventListener('click', () => {
 })
 
 preLoadBtn.addEventListener('click', () => {
-    console.log('object')
     let className = preLoadBtn.classList
     if (className.value) return
     if (!className.value) {
